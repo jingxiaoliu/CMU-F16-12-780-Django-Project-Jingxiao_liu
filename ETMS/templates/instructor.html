@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<title>{{ userID }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<script type="text/javascript" src="../static/EmployeeTraining/Instructor.js"></script>
+<body class="w3-light-grey" onload="initInstructor()">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+
+    <!-- Left Column -->
+    <div class="w3-third">
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-container">
+          <h1><img id="wordmarkPrint" src="//www.cmu.edu/cmu-design-2015/images/cmu-wordmark.png" width="350px"></h1>
+          <h2>Instructor Profile</h2>
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><label id="name"></label>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><label id="phone"></label>
+          <p><i class="fa fa-asterisk fa-fw w3-margin-right w3-large w3-text-teal"></i><label id="speciality"></label>
+        </div>
+      </div><br>
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-container">
+          <h2 class="w3-opacity">
+              Add Course
+              </h2>
+          <p>
+          <table>
+            <tr>
+                <td>Title: </td>
+                <td><input type="text" id="title" name="title"/></td>
+            </tr>
+            <tr>
+                <td>Description: </td>
+                <td><input type="text" id="description" name="description"/></td>
+            </tr>
+            <tr>
+                <td>Level: </td>
+                <td><input type="text" id="level" name="level"/></td>
+            </tr>
+           </table>
+            <button id="Add" onclick="addCourse()">Add New Course</button>
+        </div>
+      </div><br>
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Courses</h2>
+        <div class="w3-container">
+          {% for Course in Courses %}
+              {% if Course.Instructor.instrPassword == userID %}
+                  <h5 class="w3-opacity"><b>{{ Course.crs_Title }}</b></h5>
+                  <p>Level: {{ Course.crs_Type }}</p>
+                  <p>
+                      Employees:
+                      {% for Training in Trainings %}
+                        {% if Training.Course.crs_Title == Course.crs_Title %}
+                            {{ Training.EmployeeTraining.lname }} {{ Training.EmployeeTraining.fname }};
+                        {% endif %}
+                      {% endfor %}
+                  </p>
+              {% endif %}
+          {% endfor %}
+        </div>
+    <!-- End Right Column -->
+    </div>
+
+  <!-- End Grid -->
+  </div>
+
+</div>
+</div>
+</body>
+</html>

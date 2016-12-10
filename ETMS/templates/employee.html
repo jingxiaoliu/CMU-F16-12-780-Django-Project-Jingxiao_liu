@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<title>{{ userID }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+</style>
+<script type="text/javascript" src="../static/EmployeeTraining/employee.js"></script>
+<script type="text/javascript" src="../static/EmployeeTraining/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../static/EmployeeTraining/ajax.js"></script>
+<body class="w3-light-grey" onload="initEmployees()">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+
+    <!-- Left Column -->
+    <div class="w3-third">
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-container">
+          <h1><img id="wordmarkPrint" src="//www.cmu.edu/cmu-design-2015/images/cmu-wordmark.png" width="350px"></h1>
+          <h2>Employee Profile</h2>
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i><label id="name"></label>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i><label id="address"></label>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><label id="email"></label>
+          <p><i class="fa fa-calendar fa-fw w3-margin-right"></i><label id="DOB"></label>
+        </div>
+      </div><br>
+
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-container">
+          <h2 class="w3-opacity">
+              Search Courses
+          </h2>{% csrf_token %}
+            <input type="text" id="search" name="search"/>
+            <ul id="search-results">
+            </ul>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Registered Courses</h2>
+        <div class="w3-container">
+          {% for Training in Trainings %}
+              {% if Training.EmployeeTraining.empPassword == userID %}
+                  <h5 class="w3-opacity"><b>{{ Training.Course.crs_Title }}</b></h5>
+                  <p><b>Your Grade: </b>{{ Training.GradeScore.score }}</p>
+                  <p><b>Level: </b>{{ Training.Course.crs_Type }}</p>
+                  <p><b>Instructor: </b>{{ Training.Course.Instructor.instrLname }} {{ Training.Course.Instructor.instrFname }}</p>
+                  <p><b>Description: </b></p><p>{{ Training.Course.crs_Description }}</p>
+              {% endif %}
+          {% endfor %}
+        </div>
+    <!-- End Right Column -->
+    </div>
+
+  <!-- End Grid -->
+  </div>
+
+</div>
+</div>
+</body>
+</html>

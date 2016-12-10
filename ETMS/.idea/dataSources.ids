@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Sqlite (Xerial) - jdbc:sqlite:E:/Dropbox/Work&amp;Study/CMU/12780/Project/ETMS/db.sqlite3" uuid="00eaae1e-0906-450a-a3f1-7933365f1d36">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

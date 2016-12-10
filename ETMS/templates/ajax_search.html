@@ -1,0 +1,11 @@
+{% if Courses.count > 0 %}
+
+{% for Course in Courses %}
+    <li><a href="/employee/get/{{ Course.id }}/">{{ Course.crs_Title }}</a></li>
+{% endfor %}
+
+{% else %}
+
+<li>None to show!</li>
+
+{% endif %}

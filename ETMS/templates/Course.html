@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ Course.crs_Title }}</title>
+</head>
+<body>
+  <h2><b>{{ Course.crs_Title }}</b></h2>
+  <p><b>Level: </b>{{ Course.crs_Type }}</p>
+  <p><b>Instructor: </b>{{ Course.Instructor.instrLname }} {{ Course.Instructor.instrFname }}</p>
+  <p><b>Description: </b></p><p>{{ Course.crs_Description }}</p>
+</body>
+</html>
